@@ -1,5 +1,5 @@
 import express from 'express';
-import { getApiBaseUrl } from './config/apiUrl.js';
+//import { getApiBaseUrl } from './config/apiUrl.js';
 import './config/database.js';
 import activitiesRouter from './routes/activities.js';
 import leaderboardRouter from './routes/leaderboard.js';
@@ -26,3 +26,13 @@ app.get('/api/health', (_request, response) => {
 app.listen(port, '0.0.0.0', () => {
   console.log(`OctoFit Tracker API listening at ${apiBaseUrl}`);
 });
+
+function getApiBaseUrl(port = 8000): string {
+  const codespaceName = process.env.CODESPACE_NAME;
+
+  if (codespaceName) {
+    return `https://${codespaceName}-${port}.app.github.dev`;
+  }
+
+  return `http://localhost:${port}`;
+}
