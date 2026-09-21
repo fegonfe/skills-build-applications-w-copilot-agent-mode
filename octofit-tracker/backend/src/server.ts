@@ -14,9 +14,9 @@ const codespaceName = process.env.CODESPACE_NAME;
 
 let apiBaseUrl;
 if (codespaceName) {
-  apiBaseUrl = `https://${codespaceName}-${port}.app.github.dev`;
+  apiBaseUrl = `https://${codespaceName}-8000.app.github.dev`;
 } else {
-  apiBaseUrl = `http://localhost:${port}`;
+  apiBaseUrl = `http://localhost:8000`;
 }
 
 app.use(express.json());
