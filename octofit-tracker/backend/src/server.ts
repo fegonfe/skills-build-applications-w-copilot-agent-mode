@@ -9,7 +9,15 @@ import workoutsRouter from './routes/workouts.js';
 
 const app = express();
 const port = 8000;
-const apiBaseUrl = getApiBaseUrl(port);
+//const apiBaseUrl = getApiBaseUrl(port);
+const codespaceName = process.env.CODESPACE_NAME;
+
+let apiBaseUrl;
+if (codespaceName) {
+  apiBaseUrl = `https://${codespaceName}-${port}.app.github.dev`;
+} else {
+  apiBaseUrl = `http://localhost:${port}`;
+}
 
 app.use(express.json());
 
@@ -26,13 +34,3 @@ app.get('/api/health', (_request, response) => {
 app.listen(port, '0.0.0.0', () => {
   console.log(`OctoFit Tracker API listening at ${apiBaseUrl}`);
 });
-
-function getApiBaseUrl(port = 8000): string {
-  const codespaceName = process.env.CODESPACE_NAME;
-
-  if (codespaceName) {
-    return `https://${codespaceName}-${port}.app.github.dev`;
-  }
-
-  return `http://localhost:${port}`;
-}
