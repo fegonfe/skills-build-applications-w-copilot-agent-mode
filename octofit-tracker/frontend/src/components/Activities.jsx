@@ -8,6 +8,8 @@ const columns = [
   { key: 'completedAt', label: 'Completed', render: (item) => item.completedAt ? new Date(item.completedAt).toLocaleDateString() : 'N/A' },
 ]
 
+const SUFFIX_URL = 'https://${codespaceName}-8000.app.github.dev/api/activities'
+
 export default function Activities() {
   return <ResourceTable title="Activities" description="Recent movement across every team." resource="activities" columns={columns} />
 }

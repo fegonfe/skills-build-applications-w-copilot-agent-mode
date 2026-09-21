@@ -8,6 +8,8 @@ const columns = [
   { key: 'workoutsCompleted', label: 'Workouts' },
 ]
 
+const SUFFIX_URL = 'https://${codespaceName}-8000.app.github.dev/api/leaderboard'
+
 export default function Leaderboard() {
   return <ResourceTable title="Leaderboard" description="The season standings, ranked by total effort." resource="leaderboard" columns={columns} />
 }

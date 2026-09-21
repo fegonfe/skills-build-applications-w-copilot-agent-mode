@@ -8,6 +8,8 @@ const columns = [
   { key: 'weeklyPoints', label: 'Weekly points' },
 ]
 
+const SUFFIX_URL = 'https://${codespaceName}-8000.app.github.dev/api/teams'
+
 export default function Teams() {
   return <ResourceTable title="Teams" description="Crews building healthy habits together." resource="teams" columns={columns} />
 }
